@@ -1,0 +1,5 @@
+#!/bin/bash
+BLZGRF=~/epddp/database-astr/blazegraph-jar/target/blazegraph-jar-2.1.6-SNAPSHOT.jar
+BLZGRF_ASTAR=~/epddp/database-astr/blazegraph-jar/target/blazegraph-jar-2.1.6-ASTAR.jar
+
+cp $BLZGRF $BLZGRF_ASTAR

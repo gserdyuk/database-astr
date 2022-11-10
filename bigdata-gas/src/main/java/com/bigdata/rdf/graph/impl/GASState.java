@@ -330,13 +330,28 @@ public class GASState<VS, ES, ST> implements IGASState<VS, ES, ST> {
 
     }
 
+    /*
+    public void print_frontier(IStaticFrontier f){
+        System.out.println( " print_frontier:" );
+        // f=GASState.frontier()
+        Iterator<Value> iterator = f.iterator();
+        while(iterator.hasNext()) {
+            Value elem = iterator.next();
+            System.out.println( elem );
+        }
+    }
+    */
+
     @Override
     public void endRound() {
 
         round.incrementAndGet();
-
+        System.out.println("  ## frontier before compactFrontier");
+        GASContext.print_frontier(frontier);
+        System.out.println(scheduler.getClass().toString());
         scheduler.compactFrontier(frontier);
-
+        System.out.println("  ## frontier after compactFrontier");        
+        GASContext.print_frontier(frontier);
         scheduler.clear();
 
     }
@@ -383,6 +398,7 @@ public class GASState<VS, ES, ST> implements IGASState<VS, ES, ST> {
     @Override
     public String toString(final Statement e) {
 
+        System.out.println(" +++ GASState e.getClass() = " + e.getClass());
         return e.toString();
 
     }

@@ -23,6 +23,10 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.Appender;
+import org.apache.log4j.ConsoleAppender;
+
 import org.openrdf.model.Statement;
 import org.openrdf.model.Value;
 import org.openrdf.model.ValueFactory;
@@ -51,8 +55,10 @@ import com.bigdata.rdf.graph.impl.BaseGASProgram;
 public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
         IPredecessor<ASTAR.VS, ASTAR.ES, Void> {
 
-//    private static final Logger log = Logger.getLogger(ASTAR.class);
-    
+//
+//    Appender consoleAppender = new ConsoleAppender();
+//    private static final Logger log = Logger.getLogger(ASTAR.class); 
+
     public static class VS {
 
         /**
@@ -243,6 +249,13 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
     public void scatter(final IGASState<ASTAR.VS, ASTAR.ES, Void> state,
             final IGASScheduler sch, final Value u, final Statement e) {
 
+        System.out.println(" ==scatter== ");
+        System.out.println("    *** Value_u         = "+u.getClass()+" "+u.toString());
+        System.out.println("    *** Statement_e     = "+e.getClass()+" "+e.toString());
+        System.out.println("    *** e.getObject()   = "+e.getObject().getClass()+" "+e.getObject().toString());
+        System.out.println("    *** e.getSubject()  = "+e.getSubject().getClass()+" "+e.getSubject().toString());
+        System.out.println("    *** e.getPredicate()= "+e.getPredicate().getClass()+" "+e.getPredicate().toString());
+    
         // remote vertex state.
         final Value v = state.getOtherVertex(u, e);
         final VS otherState = state.getState(v);
@@ -264,7 +277,9 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
 
     @Override
     public boolean nextRound(final IGASContext<ASTAR.VS, ASTAR.ES, Void> ctx) {
-
+        
+        //
+        System.out.println("GS : next round");
         return true;
         
     }

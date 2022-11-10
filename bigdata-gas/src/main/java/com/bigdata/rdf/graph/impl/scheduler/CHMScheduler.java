@@ -17,6 +17,9 @@ package com.bigdata.rdf.graph.impl.scheduler;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+import java.util.Iterator;
+import java.util.Map;
+
 import org.openrdf.model.Value;
 
 import com.bigdata.rdf.graph.IGASSchedulerImpl;
@@ -59,6 +62,54 @@ public class CHMScheduler implements IGASSchedulerImpl {
 
     @Override
     public void compactFrontier(final IStaticFrontier frontier) {
+        System.out.println("CHM Scheduler - vertex array");
+/*
+        Iterator iter= vertices.keySet().iterator();
+        while(iter.hasNext()){
+            System.out.println("  iter:  "+iter+" : "+ vertices.get(iter));
+            iter.next();
+        }
+
+
+        for ( Value key: vertices.keySet()) {
+            System.out.println("  iter:  "+key+" : "+ vertices.get(key).toString() );
+        }
+*/
+        for ( Map.Entry<Value,Value>  entry: vertices.entrySet()) {
+            System.out.println(
+            "  iter: "+
+            "   "+ entry+
+            " : "+ entry.getKey().getClass()   + " : "+ entry.getKey().toString() + 
+            " | "+ entry.getValue().getClass() + " : "+ entry.getValue().toString() +
+            " / "+ entry.getClass()            + " : "+ entry.toString()
+            );
+        }
+        System.out.println("-- =delete all except 1st key---");
+
+        Iterator<Value>  iter =vertices.keySet().iterator();
+        
+        if(iter.hasNext()) 
+            iter.next();
+
+        while(iter.hasNext()) {
+            Value kelem=iter.next();
+            Value velem= vertices.get(kelem);
+            System.out.println(
+             "  remove : " +  kelem +" / " +velem+ " ");  
+            //vertices.remove(kelem,velem);
+    
+        }
+
+
+        Iterator<Value>  iter1 =vertices.keySet().iterator();        
+        while(iter1.hasNext()) {
+            Value kelem1=iter1.next();
+            System.out.println(
+            "  iter2 : " +  kelem1 +" / " +vertices.get(kelem1)+ " "
+            );  
+    
+        }
+
 
         frontier.resetFrontier(vertices.size()/* minCapacity */, sortFrontier,
                 vertices.keySet().iterator());
