@@ -94,9 +94,8 @@ public class CHMScheduler implements IGASSchedulerImpl {
         while(iter.hasNext()) {
             Value kelem=iter.next();
             Value velem= vertices.get(kelem);
-            System.out.println(
-             "  remove : " +  kelem +" / " +velem+ " ");  
-            //vertices.remove(kelem,velem);
+            // System.out.println( "  remove : " +  kelem +" / " +velem+ " ");  
+            //  vertices.remove(kelem,velem);
     
         }
 
