@@ -1,8 +1,31 @@
 
 # What to do to implement A*star algorithm #
 
-## I. PLan
-### 1) understand implementation ##
+## I. PLan Stage 2
+
+### 1) Given
+   - we have working (in generally) ASTAR algorythm. 
+   
+   - need to put everything in order and 
+   
+   -make next steps
+ 
+### 2) Put in order statement info 
+   (obj pred subj file) and parsing
+   
+### 3) write filtering
+
+### 4) pass external data (- filter use, filter ignore)
+
+### 5) use python client
+       to improve repeatability
+ 
+### 6) store everything in git
+
+
+## II. PLan stage1
+
+### 1) understand implementation (done) ### 
 
   1-1) understand class relations around BFS/ SSSP/ GAS*
 
@@ -14,19 +37,19 @@
 
   1-5) work with docs/ papers
 
-### 2) prepare test data
+### 2) prepare test data (done)
 
   2-1) run blasegraph, import small data set (RDF)
 
   2-2) watch how does it work and get results
 
-### 3) learn how to build:
+### 3) learn how to build (done)
 
   3-1) build original
 
   3-2) add new class and build modified
   
-### 4) make modifications
+### 4) make modifications (done)
 
   4-1) make new searchalgorythm
 
@@ -34,20 +57,21 @@
 
   4-3) build new version
 
-## 5) use Java 1_8 
+### 5) use Java 1_8 (done)
  and watch for conflicts fo different version - for example env JAVA_HOME
  - see readme.md
 
-## II.Notes
 
-1) Java
+## III.Notes
+
+### 1) Java
   Was successfull with Java 1.8.0_342. Attempts to use Java 11 failed.
   Also - need to install full SDK  Only Java is not enough - also need Javac and so on.
   Otherwise Maven will not build.
 
 1-1)use UPDATE-JA
 
-2) after build- results re in bigdata.jar/target
+### 2) after build- results re in bigdata.jar/target
 
    run it like: 
 
@@ -61,7 +85,7 @@
    > java -server -Xmx4g -jar /bigdata-jar/target/bigdata-jar-2.1.6-master-20220923.jar
 ```
     
-3) load :	
+### 3) load :	
 
 ```
 load <file:///home/gserdyuk/epddp/blazegraph-wk/data/data1.n3>
@@ -69,7 +93,7 @@ load <file:///home/gserdyuk/epddp/blazegraph-wk/data/data1.n3>
 
    query:	
 
-4) load :	
+### 4) load :	
 
 ```
 load <file:///home/gserdyuk/epddp/database-astr/mods-astar/data/stack-ov-1.ttl>
@@ -92,10 +116,8 @@ query:
 clear all
 ```
 
-
-
-5) GAS things:  (search with with stack-ov-1)
-  ```
+### 5) GAS things:  (search with with stack-ov-1)
+```
   PREFIX prism: <http://prism.uvsq.fr/>
   PREFIX gas: <http://www.bigdata.com/rdf/gas#>
   SELECT ?depth ?predecessor ?linkType ?out {
@@ -115,10 +137,11 @@ clear all
 order by desc(?depth)
 limit 100
 ```
-6) more GAS things:  (search with with stack-ov-1)
+
+### 6) more GAS things:  (search with with stack-ov-1)
 
 ```
-# use with stack-ov-1.ttl
+\# use with stack-ov-1.ttl
 PREFIX prism: <http://prism.uvsq.fr/>
   PREFIX gas: <http://www.bigdata.com/rdf/gas#>
   SELECT ?depth ?predecessor ?linkType ?out {

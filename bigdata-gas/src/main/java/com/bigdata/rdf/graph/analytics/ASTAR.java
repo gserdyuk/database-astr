@@ -23,10 +23,6 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.Appender;
-import org.apache.log4j.ConsoleAppender;
-
 import org.openrdf.model.Statement;
 import org.openrdf.model.Value;
 import org.openrdf.model.ValueFactory;
@@ -55,8 +51,6 @@ import com.bigdata.rdf.graph.impl.BaseGASProgram;
 public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
         IPredecessor<ASTAR.VS, ASTAR.ES, Void> {
 
-//
-//    Appender consoleAppender = new ConsoleAppender();
 //    private static final Logger log = Logger.getLogger(ASTAR.class); 
 
     public static class VS {
@@ -237,6 +231,20 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
         
     }
 
+    String getPredicateString(String stmnt){
+        String[] tk=stmnt.replaceAll("<|>"," ").split(",");
+        String   pr=tk[1].trim();
+        System.out.println("### ### PredicateSTring ="+pr);
+        return pr;   
+
+    }
+
+    String getPredicateName(String pr){
+        String[] list=pr.split("(");
+        System.out.println("### ### predicateName="+list[0]);
+        return list[0];
+    }
+
     /**
      * The remote vertex is scheduled for activation unless it has already been
      * visited.
@@ -250,12 +258,26 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
             final IGASScheduler sch, final Value u, final Statement e) {
 
         System.out.println(" ==scatter== ");
-        System.out.println("    *** Value_u         = "+u.getClass()+" "+u.toString());
-        System.out.println("    *** Statement_e     = "+e.getClass()+" "+e.toString());
-        System.out.println("    *** e.getObject()   = "+e.getObject().getClass()+" "+e.getObject().toString());
-        System.out.println("    *** e.getSubject()  = "+e.getSubject().getClass()+" "+e.getSubject().toString());
-        System.out.println("    *** e.getPredicate()= "+e.getPredicate().getClass()+" "+e.getPredicate().toString());
-    
+        String statementStr=state.toString(e);
+        boolean matches=statementStr.matches("(.*)?http://prism\\.uvsq\\.fr#q(.*)?");
+
+        //System.out.println("    *** Value_u         = "+u.getClass()+" "+u.toString());
+        //System.out.println("    *** Statement_e     = "+e.getClass()+" "+e.toString());
+        //System.out.println("    *** e.getObject()   = "+e.getObject().getClass()+" "+e.getObject().toString());
+        //System.out.println("    *** e.getSubject()  = "+e.getSubject().getClass()+" "+e.getSubject().toString());
+        //System.out.println("    *** state.getClass    = " + state.getGraphAccessor().getKB().toString((ISPO)e));
+        System.out.println("    *** state.getClass    = " + state.getClass());
+        System.out.println("    *** e                 = " + statementStr);
+        System.out.println("    *** matches           = " + matches);
+        //System.out.println("    *** predicate         = " + getPredicateName(getPredicateString(statementStr)));
+
+        
+
+        if (matches) { // GS filter mock  
+            System.out.println("    *** - eliminated "+statementStr);
+            return;
+        }
+        
         // remote vertex state.
         final Value v = state.getOtherVertex(u, e);
         final VS otherState = state.getState(v);

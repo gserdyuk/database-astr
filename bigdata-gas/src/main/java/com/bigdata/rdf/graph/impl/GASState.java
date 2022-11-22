@@ -356,8 +356,7 @@ public class GASState<VS, ES, ST> implements IGASState<VS, ES, ST> {
 
     }
 
-    /**
-     * {@inheritDoc}
+    /**  * {@inheritDoc}
      * 
      * FIXME REDUCE : parallelize with nthreads. The reduce operations are often
      * lightweight, so maybe a fork/join pool would work better?
