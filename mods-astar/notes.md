@@ -141,7 +141,7 @@ limit 100
 ### 6) more GAS things:  (search with with stack-ov-1)
 
 ```
-\# use with stack-ov-1.ttl
+# use with stack-ov-1.ttl
 PREFIX prism: <http://prism.uvsq.fr/>
   PREFIX gas: <http://www.bigdata.com/rdf/gas#>
   SELECT ?depth ?predecessor ?linkType ?out {
