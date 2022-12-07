@@ -6,10 +6,14 @@ from urllib.request import urlopen
 
 server = SPARQLServer('http://172.17.0.1:9999/blazegraph/sparql')
 
+
+#test3-1.ttl will have C->H type P but reversed. Result is expected as in here
+#
+
 u='''
 clear all;
 
-load <file:///home/gserdyuk/epddp/database-astr/mods-astar/data/test1.ttl>;
+load <file:///home/gserdyuk/epddp/database-astr/mods-astar/data/test3-1.ttl>;
 '''
 
 ans1=server.update(u)
@@ -19,12 +23,12 @@ print(ans1)
 print('----------------------')
 
 q='''
-# use with test3.ttl
+# 
 PREFIX prism: <http://prism.uvsq.fr/>
   PREFIX gas: <http://www.bigdata.com/rdf/gas#>
   SELECT ?depth ?predecessor ?linkType ?out {
   SERVICE gas:service {
-     gas:program gas:gasClass "com.bigdata.rdf.graph.analytics.BFS" .
+     gas:program gas:gasClass "com.bigdata.rdf.graph.analytics.ASTAR" .
      gas:program gas:in prism:a . # one or more times, specifies the initial frontier.
      gas:program gas:target prism:m . # only retain vertices along paths to these target vertices.
      gas:program gas:out ?out . # exactly once - will be bound to the visited vertices.
