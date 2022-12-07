@@ -9,7 +9,7 @@ server = SPARQLServer('http://172.17.0.1:9999/blazegraph/sparql')
 u='''
 clear all;
 
-load <file:///home/gserdyuk/epddp/database-astr/mods-astar/data/test1.ttl>;
+load <file:///home/gserdyuk/epddp/database-astr/mods-astar/data/triples_dump.n3>;
 '''
 
 ans1=server.update(u)
@@ -19,14 +19,13 @@ print(ans1)
 print('----------------------')
 
 q='''
-# use with test3.ttl
-PREFIX prism: <http://prism.uvsq.fr/>
+# example 1
   PREFIX gas: <http://www.bigdata.com/rdf/gas#>
   SELECT ?depth ?predecessor ?linkType ?out {
   SERVICE gas:service {
      gas:program gas:gasClass "com.bigdata.rdf.graph.analytics.BFS" .
-     gas:program gas:in prism:a . # one or more times, specifies the initial frontier.
-     gas:program gas:target prism:m . # only retain vertices along paths to these target vertices.
+     gas:program gas:in <http://sunflower.test/asn_cidr/85.142.164.0%2F22> . # one or more times, specifies the initial frontier.
+     gas:program gas:target <http://sunflower.test/phone/%2B7+812+670+00+00> . # only retain vertices along paths to these target vertices.
      gas:program gas:out ?out . # exactly once - will be bound to the visited vertices.
      gas:program gas:out1 ?depth . # exactly once - will be bound to the depth of the visited vertices.
      gas:program gas:out2 ?predecessor . # exactly once - will be bound to the predecessor.
