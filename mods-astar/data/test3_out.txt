@@ -9,7 +9,7 @@ depth	predecessor	linkType	out
 
 
 test3
-# use with stack-ov-1.ttl
+# use with test3.ttl
 PREFIX prism: <http://prism.uvsq.fr/>
   PREFIX gas: <http://www.bigdata.com/rdf/gas#>
   SELECT ?depth ?predecessor ?linkType ?out {
