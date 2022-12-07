@@ -253,13 +253,36 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
      * {@link Statement#getSubject()}. The remote vertex is
      * {@link Statement#getObject()}.
      */
+
+    boolean matchOneOf(String s){
+
+        boolean r;
+        
+        r=s.matches("(.*)?http://sunflower\\.test/asn_cidr/(.*)?");
+        if (r == true){
+            return true;
+            }
+        
+        r=s.matches("(.*)?rdf:type(.*)?http://sunflower\\.test/Handle(.*)?");
+        if (r == true){
+            return true;
+            }
+
+        //r=s.matches("(.*)?http://sunflower\\.test/asn_cidr/86\\.102\\.188(.*)?");
+        if (r == true){
+            return true;
+            }
+    
+        return r;
+    }
+    
     @Override
     public void scatter(final IGASState<ASTAR.VS, ASTAR.ES, Void> state,
             final IGASScheduler sch, final Value u, final Statement e) {
 
         System.out.println(" ==scatter== ");
         String statementStr=state.toString(e);
-        boolean matches=statementStr.matches("(.*)?http://prism\\.uvsq\\.fr#q(.*)?");
+        boolean matches=matchOneOf(statementStr);      //statementStr.matches("");             //("(.*)?http://prism\\.uvsq\\.fr#q(.*)?");
 
         //System.out.println("    *** Value_u         = "+u.getClass()+" "+u.toString());
         //System.out.println("    *** Statement_e     = "+e.getClass()+" "+e.toString());

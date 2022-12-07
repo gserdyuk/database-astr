@@ -104,7 +104,7 @@ query:	select * where {<http://prism.uvsq.fr/c> ?p ?s}
    or Load :
 
 ```
-load <file:///home/gserdyuk/epddp/database-astr/mods-astar/data/stack-ov-1.ttl>
+	load <file:///home/gserdyuk/epddp/database-astr/mods-astar/data/stack-ov-1.ttl>
 
 query:    
     PREFIX prism: <http://prism.uvsq.fr/>
