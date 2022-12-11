@@ -171,12 +171,13 @@ public class GASContext<VS, ES, ST> implements IGASContext<VS, ES, ST> {
 
     public static void print_frontier(IStaticFrontier f){
         System.out.println( " print_frontier:" );
-        // f=GASState.frontier()
+        /*
         Iterator<Value> iterator = f.iterator();
         while(iterator.hasNext()) {
             Value elem = iterator.next();
             System.out.println( elem );
         }
+        */
     }
 
     @Override
