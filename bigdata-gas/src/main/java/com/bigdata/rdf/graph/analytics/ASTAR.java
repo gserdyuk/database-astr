@@ -17,6 +17,7 @@
 */
 package com.bigdata.rdf.graph.analytics;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -231,6 +232,32 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
         
     }
 
+    String parseStatementString2Predicate(String st){
+        // st = "< http://sunflower.test/asn_cidr/86.102.213.0%2F24(TermId(5119U)), http://sunflower.test/admin_c(TermId(476U)), http://sunflower.test/handle/IS111-RIPE(TermId(5577U)), file:/home/gserdyuk/epddp/database-astr/mods-astar/data/triples_dump.ttl(TermId(8404U)) >"
+        String[] tk=st.replaceAll("[<>]"," ").split("[,(]");
+        // st = "  http://sunflower.test/asn_cidr/86.102.213.0%2F24(TermId(5119U)), http://sunflower.test/admin_c(TermId(476U)), http://sunflower.test/handle/IS111-RIPE(TermId(5577U)), file:/home/gserdyuk/epddp/database-astr/mods-astar/data/triples_dump.ttl(TermId(8404U))  "
+        // st = "  http://sunflower.test/asn_cidr/86.102.213.0%2F24
+        //      "TermId"
+        //      "5119U))"
+        //  [3]    " http://sunflower.test/admin_c"
+        //      "TermId"
+        //       "476U))"
+        //      " http://sunflower.test/handle/IS111-RIPE:
+        //      "TermId"
+        //      "5577U))""
+        //      "file:/home/gserdyuk/epddp/database-astr/mods-astar/data/triples_dump.ttl"
+        //      "TermId"
+        //      "8404U))  "
+        System.out.println("### ### ParsedStatement predicate="); 
+        /*for (String s: tk) {           
+            System.out.println(s);   // o[0] p[3] s[6]
+            }*/
+        String predicate=tk[3].trim();
+        System.out.println(predicate);
+        return predicate;// returns predicate
+    }
+
+    /*
     String getPredicateString(String stmnt){
         String[] tk=stmnt.replaceAll("<|>"," ").split(",");
         String   pr=tk[1].trim();
@@ -244,6 +271,7 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
         System.out.println("### ### predicateName="+list[0]);
         return list[0];
     }
+    */
 
     /**
      * The remote vertex is scheduled for activation unless it has already been
@@ -254,20 +282,22 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
      * {@link Statement#getObject()}.
      */
 
+    /* naive implementation- but very flexible
+
     boolean matchOneOf(String s){
 
-        boolean r;
-        
-        r=s.matches("(.*)?http://sunflower\\.test/asn_cidr/(.*)?");
-        if (r == true){
-            return true;
-            }
+        boolean r=false;
         
         r=s.matches("(.*)?rdf:type(.*)?http://sunflower\\.test/Handle(.*)?");
         if (r == true){
             return true;
             }
 
+        //r=s.matches("(.*)?http://sunflower\\.test/asn_cidr/(.*)?");
+        if (r == true){
+            return true;
+            }
+        
         //r=s.matches("(.*)?http://sunflower\\.test/asn_cidr/86\\.102\\.188(.*)?");
         if (r == true){
             return true;
@@ -275,23 +305,46 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
     
         return r;
     }
-    
+    */
+
+    /*GS: more efficient */
+    boolean matchOneOf(String s){
+        List<String> rej = Arrays.asList("rdf:type","http://sunflower.test/is_admin_c_of");
+        System.out.println( " ## ## ## matchOneOf ");
+        System.out.println( " s= "+s);
+        System.out.println( "    -- rejected array --");
+        for (String rj: rej){
+            System.out.println(rj);
+        }
+
+        if (rej.contains(s)) {
+            System.out.println( "returning true");
+            return true;
+
+        }
+        else {   
+            System.out.println( "returning false");
+            return false;
+        }
+    }
+   
+
     @Override
     public void scatter(final IGASState<ASTAR.VS, ASTAR.ES, Void> state,
             final IGASScheduler sch, final Value u, final Statement e) {
 
         System.out.println(" ==scatter== ");
         String statementStr=state.toString(e);
-        boolean matches=matchOneOf(statementStr);      //statementStr.matches("");             //("(.*)?http://prism\\.uvsq\\.fr#q(.*)?");
+        boolean matches=matchOneOf(parseStatementString2Predicate(statementStr));      //statementStr.matches("");             //("(.*)?http://prism\\.uvsq\\.fr#q(.*)?");
 
         //System.out.println("    *** Value_u         = "+u.getClass()+" "+u.toString());
         //System.out.println("    *** Statement_e     = "+e.getClass()+" "+e.toString());
         //System.out.println("    *** e.getObject()   = "+e.getObject().getClass()+" "+e.getObject().toString());
         //System.out.println("    *** e.getSubject()  = "+e.getSubject().getClass()+" "+e.getSubject().toString());
         //System.out.println("    *** state.getClass    = " + state.getGraphAccessor().getKB().toString((ISPO)e));
-        System.out.println("    *** state.getClass    = " + state.getClass());
+        //System.out.println("    *** state.getClass    = " + state.getClass());
         System.out.println("    *** e                 = " + statementStr);
-        System.out.println("    *** matches           = " + matches);
+        System.out.println("\n    *** matches           = " + matches);
         //System.out.println("    *** predicate         = " + getPredicateName(getPredicateString(statementStr)));
 
         
