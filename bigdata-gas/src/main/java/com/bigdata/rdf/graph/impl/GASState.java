@@ -41,7 +41,7 @@ import com.bigdata.rdf.graph.IReducer;
 import com.bigdata.rdf.graph.IStaticFrontier;
 import com.bigdata.rdf.graph.util.GASUtil;
 
-public class GASState<VS, ES, ST> implements IGASState<VS, ES, ST> {
+public class GASState<VS, ES, ST>  implements IGASState<VS, ES, ST> {
 
     private static final Logger log = Logger.getLogger(GASState.class);
 
@@ -118,6 +118,13 @@ public class GASState<VS, ES, ST> implements IGASState<VS, ES, ST> {
      * Used to establish a total ordering over RDF {@link Value}s.
      */
     private final Comparator<Value> valueComparator;
+
+    /**
+      *  Used to ensure that the epv set is distinct.
+      *  keeps "exclude predicte as value"during operation
+      */
+    public final Set<Value> context_epv = new HashSet<Value>();
+
     
     public GASState(final IGASEngine gasEngine,//
             final IGraphAccessor graphAccessor, //
@@ -161,7 +168,6 @@ public class GASState<VS, ES, ST> implements IGASState<VS, ES, ST> {
          * RDF Values, but that will push the heap.
          */
         this.valueComparator = new ValueComparator();
-        
     }
 
     /**
@@ -321,6 +327,27 @@ public class GASState<VS, ES, ST> implements IGASState<VS, ES, ST> {
 
     }
     
+    //GS 
+    @Override
+    public void setEpv(final IGASContext<VS, ES, ST> ctx, final Value... edges) {
+
+        if (edges == null)
+            throw new IllegalArgumentException();
+
+        for (Value e : edges) {
+            this.context_epv.add(asValue(e)); // convert to internal form and impose distinct.
+        }
+
+    }
+
+    @Override
+    public Set<Value> getEpv() {
+
+            return this.context_epv;  // context_epv because that is epv same like in context
+        }
+
+
+
     @Override
     public void traceState() {
 

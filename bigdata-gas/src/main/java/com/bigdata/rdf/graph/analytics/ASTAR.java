@@ -231,30 +231,29 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
         return true;
         
     }
-
+    /**
+     * 
+     * st = "  http://sunflower.test/asn_cidr/86.102.213.0%2F24(TermId(5119U)), http://sunflower.test/admin_c(TermId(476U)), http://sunflower.test/handle/IS111-RIPE(TermId(5577U)), file:/home/gserdyuk/epddp/database-astr/mods-astar/data/triples_dump.ttl(TermId(8404U))  "
+     * st = 
+     * [0] "http://sunflower.test/asn_cidr/86.102.213.0%2F24
+     *     "TermId"
+     *     "5119U))"
+     * [3] "http://sunflower.test/admin_c"
+     *     "TermId"
+     *     "476U))"
+     *     "http://sunflower.test/handle/IS111-RIPE:
+     *     "TermId"
+     *     "5577U))""
+     *     "file:/home/gserdyuk/epddp/database-astr/mods-astar/data/triples_dump.ttl"
+     *     "TermId"
+     *     "8404U))"
+     */
     String parseStatementString2Predicate(String st){
         // st = "< http://sunflower.test/asn_cidr/86.102.213.0%2F24(TermId(5119U)), http://sunflower.test/admin_c(TermId(476U)), http://sunflower.test/handle/IS111-RIPE(TermId(5577U)), file:/home/gserdyuk/epddp/database-astr/mods-astar/data/triples_dump.ttl(TermId(8404U)) >"
         String[] tk=st.replaceAll("[<>]"," ").split("[,(]");
-        // st = "  http://sunflower.test/asn_cidr/86.102.213.0%2F24(TermId(5119U)), http://sunflower.test/admin_c(TermId(476U)), http://sunflower.test/handle/IS111-RIPE(TermId(5577U)), file:/home/gserdyuk/epddp/database-astr/mods-astar/data/triples_dump.ttl(TermId(8404U))  "
-        // st = "  http://sunflower.test/asn_cidr/86.102.213.0%2F24
-        //      "TermId"
-        //      "5119U))"
-        //  [3]    " http://sunflower.test/admin_c"
-        //      "TermId"
-        //       "476U))"
-        //      " http://sunflower.test/handle/IS111-RIPE:
-        //      "TermId"
-        //      "5577U))""
-        //      "file:/home/gserdyuk/epddp/database-astr/mods-astar/data/triples_dump.ttl"
-        //      "TermId"
-        //      "8404U))  "
-        System.out.println("### ### ParsedStatement predicate="); 
-        /*for (String s: tk) {           
-            System.out.println(s);   // o[0] p[3] s[6]
-            }*/
-        String predicate=tk[3].trim();
-        System.out.println(predicate);
-        return predicate;// returns predicate
+        String predicate=tk[3].trim();        
+        System.out.println("### ### ParsedStatement predicate="+ predicate);
+        return predicate;   // returns
     }
 
     /*
@@ -310,24 +309,43 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
     /*GS: more efficient */
     boolean matchOneOf(String s){
         List<String> rej = Arrays.asList("rdf:type","http://sunflower.test/is_admin_c_of");
+        /*List<String> rej = Arrays.asList("");
         System.out.println( " ## ## ## matchOneOf ");
         System.out.println( " s= "+s);
         System.out.println( "    -- rejected array --");
         for (String rj: rej){
             System.out.println(rj);
         }
-
+        */   
         if (rej.contains(s)) {
-            System.out.println( "returning true");
+        //    System.out.println( "returning true");
             return true;
-
         }
         else {   
-            System.out.println( "returning false");
+        //    System.out.println( "returning false");
             return false;
         }
     }
    
+    boolean matchOneOf2(String s, String[] sa){
+        List<String> rej = Arrays.asList(sa);
+        /* List<String> rej = Arrays.asList("");
+        System.out.println( " ## ## ## matchOneOf2 ");
+        System.out.println( " s = "+s);
+        System.out.println( " -- rejected array --");
+        for (String rj: rej){
+            System.out.println(rj);
+        }
+        */
+        if (rej.contains(s)) {
+        //    System.out.println( "returning true");
+            return true;
+        }
+        else {   
+        //    System.out.println( "returning false");
+            return false;
+        }
+    }
 
     @Override
     public void scatter(final IGASState<ASTAR.VS, ASTAR.ES, Void> state,
@@ -335,7 +353,15 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
 
         System.out.println(" ==scatter== ");
         String statementStr=state.toString(e);
-        boolean matches=matchOneOf(parseStatementString2Predicate(statementStr));      //statementStr.matches("");             //("(.*)?http://prism\\.uvsq\\.fr#q(.*)?");
+        String[] toReject=state.getEpv().toString().
+            replaceAll("\\[","").replaceAll("\\]","").replaceAll("\\ ","").
+            split(",");
+        
+        boolean matches2=matchOneOf2(parseStatementString2Predicate(statementStr),toReject);      
+        
+        //boolean matches=matchOneOf(parseStatementString2Predicate(statementStr));
+            
+        boolean matches_new= state.getEpv().contains(e.getPredicate());
 
         //System.out.println("    *** Value_u         = "+u.getClass()+" "+u.toString());
         //System.out.println("    *** Statement_e     = "+e.getClass()+" "+e.toString());
@@ -343,13 +369,20 @@ public class ASTAR extends BaseGASProgram<ASTAR.VS, ASTAR.ES, Void> implements
         //System.out.println("    *** e.getSubject()  = "+e.getSubject().getClass()+" "+e.getSubject().toString());
         //System.out.println("    *** state.getClass    = " + state.getGraphAccessor().getKB().toString((ISPO)e));
         //System.out.println("    *** state.getClass    = " + state.getClass());
-        System.out.println("    *** e                 = " + statementStr);
-        System.out.println("\n    *** matches           = " + matches);
-        //System.out.println("    *** predicate         = " + getPredicateName(getPredicateString(statementStr)));
+        // /System.out.println(" exclude frominput:" + state.getClass());
+        System.out.println(" *** e            = " + statementStr);
+        System.out.println(" *** matches2      = " + matches2);
+        //System.out.println(" *** matches       = " + matches); 
 
-        
+        /*
+        System.out.println(" *** exclude frominput:" + state.getEpv().toString());    
+        System.out.println(" *** splitted         :" + toReject.toString());    
+        System.out.println(" *** predicate        = " + e.getPredicate());
+        System.out.println(" *** matches_new      = " + matches_new);
+        */
 
-        if (matches) { // GS filter mock  
+
+        if (matches2) { // GS filter mock  
             System.out.println("    *** - eliminated "+statementStr);
             return;
         }
