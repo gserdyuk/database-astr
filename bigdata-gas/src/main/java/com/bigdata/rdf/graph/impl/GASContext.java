@@ -116,6 +116,14 @@ public class GASContext<VS, ES, ST> implements IGASContext<VS, ES, ST> {
      */
     private final AtomicInteger maxIterationsAfterTargets = new AtomicInteger(
             Integer.MAX_VALUE);
+
+    // GS
+    /**
+     * A collection of edges to avoid.
+     */
+    private final Set<Value> epv = 
+    		Collections.synchronizedSet(new LinkedHashSet<Value>());
+    
     
     /**
      * 
@@ -1013,7 +1021,21 @@ public class GASContext<VS, ES, ST> implements IGASContext<VS, ES, ST> {
         
     }
 
+    //GS
+    
+    @Override
+    public void setEpv(final Value[] epv_in) {
+    	
+    	this.epv.addAll(Arrays.asList(epv_in));
+    	
+    }
 
+    @Override
+    public Set<Value> getEpv() {
+    	
+    	return this.epv;
+    	
+    }
 
 //    /**
 //     * {@inheritDoc}
