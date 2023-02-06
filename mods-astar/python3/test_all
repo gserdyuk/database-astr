@@ -1,0 +1,12 @@
+#!/bin/bash
+
+python graph_1.py 	>graph_1_out.txt
+python graph_1a.py 	>graph_1a_out.txt
+python graph_2.py 	>graph_2_out.txt
+python graph_3.py 	>graph_3_out.txt
+
+
+#python triplets_1.py	> triplets_1_out.txt
+./diff_all
+
+

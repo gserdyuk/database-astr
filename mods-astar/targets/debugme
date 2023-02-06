@@ -1,0 +1,4 @@
+#!/bin/bash
+
+jdb -attach 5005 
+#stop at com.bigdata.rdf.graph.analytics.ASTAR:356

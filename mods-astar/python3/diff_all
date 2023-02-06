@@ -1,0 +1,7 @@
+#!/bin/bash
+diff -q graph_1_out.txt ./golden
+diff -q graph_2_out.txt ./golden
+diff -q graph_3_out.txt ./golden
+diff -q graph_1a_out.txt ./golden
+
+

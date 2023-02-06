@@ -1,0 +1,15 @@
+#!/bin/bash
+
+diff bond1_out.txt ./golden
+
+diff -q example_1_1_out.txt  	./golden
+diff -q example_1_out.txt  	./golden
+#diff -q example_2_2_out.txt  	./golden
+diff -q example_2_out.txt  	./golden
+
+diff -q test1_out.txt 	./golden
+diff -q test2_out.txt 	./golden
+diff -q test3-1_out.txt ./golden
+diff -q test3_out.txt 	./golden
+
+

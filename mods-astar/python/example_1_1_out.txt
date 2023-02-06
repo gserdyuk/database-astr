@@ -1,7 +1,999 @@
 <Response [200]>
 ----------------------
-{'head': {'vars': ['depth', 'predecessor', 'linkType', 'out']}, 'results': {'bindings': [{'out': {'type': 'uri', 'value': 'http://sunflower.test/phone/%2B7+812+670+00+00'}, 'depth': {'datatype': 'http://www.w3.org/2001/XMLSchema#int', 'type': 'literal', 'value': '2'}, 'predecessor': {'type': 'uri', 'value': 'http://sunflower.test/handle/CMFT'}, 'linkType': {'type': 'uri', 'value': 'http://sunflower.test/has_phone'}}, {'out': {'type': 'uri', 'value': 'http://sunflower.test/handle/CMFT'}, 'depth': {'datatype': 'http://www.w3.org/2001/XMLSchema#int', 'type': 'literal', 'value': '1'}, 'predecessor': {'type': 'uri', 'value': 'http://sunflower.test/asn_cidr/85.142.164.0%2F22'}, 'linkType': {'type': 'uri', 'value': 'http://sunflower.test/abuse_c'}}, {'out': {'type': 'uri', 'value': 'http://sunflower.test/asn_cidr/85.142.164.0%2F22'}, 'depth': {'datatype': 'http://www.w3.org/2001/XMLSchema#int', 'type': 'literal', 'value': '0'}, 'predecessor': {'type': 'uri', 'value': 'http://sunflower.test/asn/56534'}, 'linkType': {'type': 'uri', 'value': 'http://sunflower.test/contains'}}, {'out': {'type': 'uri', 'value': 'http://sunflower.test/asn_cidr/85.142.164.0%2F22'}, 'depth': {'datatype': 'http://www.w3.org/2001/XMLSchema#int', 'type': 'literal', 'value': '0'}, 'predecessor': {'type': 'uri', 'value': 'http://sunflower.test/handle/CMFT'}, 'linkType': {'type': 'uri', 'value': 'http://sunflower.test/is_abuse_c_of'}}]}}
-http://sunflower.test/phone/%2B7+812+670+00+00 <--(http://sunflower.test/has_phone)--<< http://sunflower.test/handle/CMFT
-http://sunflower.test/handle/CMFT <--(http://sunflower.test/abuse_c)--<< http://sunflower.test/asn_cidr/85.142.164.0%2F22
-http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/contains)--<< http://sunflower.test/asn/56534
-http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/is_abuse_c_of)--<< http://sunflower.test/handle/CMFT
+{
+    "head": {
+        "vars": [
+            "depth",
+            "out",
+            "p",
+            "o"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "2"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/belongs_to"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "2"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/belongs_to"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/PIRX-RIPE"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "2"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_valid"
+                },
+                "o": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+                    "type": "literal",
+                    "value": "true"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "2"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "+78126700000"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "2"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone_country"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/country/RU"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "2"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/raw_phone"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "+7 812 670 00 00"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "2"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/type"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": ""
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "2"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/type"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "voice"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "2"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/Phone"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle_city"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/city/Sankt-Peterburg_60.0_30.5"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle_country"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/country/RU"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle_email"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "abuse@comfortel.pro"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle_email"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "lir@comfortel.pro"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle_last_modified"
+                },
+                "o": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+                    "type": "literal",
+                    "value": "2022-01-18T10:37:33.000Z"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle_name"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "CMFT"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle_zip_code"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/zip_code/197374"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/has_phone"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/has_phone"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/phone/%2B7+812+670+00+00+ext.+4"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_abuse_c_of"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_abuse_c_of"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.247.0%2F24"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_abuse_c_of"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/89.104.126.0%2F24"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_abuse_c_of"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/89.223.80.0%2F21"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_admin_c_of"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/89.223.100.0%2F24"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_admin_c_of"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/89.104.126.0%2F24"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_admin_c_of"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/89.223.80.0%2F21"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_tech_c_of"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/89.223.100.0%2F24"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_tech_c_of"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/89.104.126.0%2F24"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_tech_c_of"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/89.223.80.0%2F21"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/source"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "RIPE"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2006/vcard/ns#hasAddress"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/address/savushkina+119-5_+193091+st_petersburg+russia"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2006/vcard/ns#hasAddress"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/address/savushkina+119-5_193091+st_petersburg+russia"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2006/vcard/ns#hasEmail"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "mailto:abuse@comfortel.pro"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/2006/vcard/ns#hasEmail"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "mailto:lir@comfortel.pro"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/abuse_mailbox"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "mailto:abuse@comfortel.pro"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/fax_no"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "+7 812 670 00 00 ext. 4"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle_admin_c"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/ME3174-RIPE"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle_tech_c"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/POOF-RIPE"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/role"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "Comfortel Ltd Contacts Data"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "1"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/Handle"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "0"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/abuse_c"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/handle/CMFT"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "0"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/cidr"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "85.142.164.0/22"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "0"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/cidr_country"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/country/RU"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "0"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/cidr_last_modified"
+                },
+                "o": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+                    "type": "literal",
+                    "value": "2018-06-30T20:11:06.000Z"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "0"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/end_address"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "85.142.167.255"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "0"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/ip_version"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "v4"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "0"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/is_contained_in"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn/56534"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "0"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/netname"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "NET"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "0"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/start_address"
+                },
+                "o": {
+                    "type": "literal",
+                    "value": "85.142.164.0"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/asn_cidr/85.142.164.0%2F22"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "0"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sunflower.test/AsnCidr"
+                }
+            }
+        ]
+    }
+}
+http://sunflower.test/phone/%2B7+812+670+00+00 <--(http://sunflower.test/belongs_to)--<< http://sunflower.test/handle/CMFT
+http://sunflower.test/phone/%2B7+812+670+00+00 <--(http://sunflower.test/belongs_to)--<< http://sunflower.test/handle/PIRX-RIPE
+http://sunflower.test/phone/%2B7+812+670+00+00 <--(http://sunflower.test/is_valid)--<< true
+http://sunflower.test/phone/%2B7+812+670+00+00 <--(http://sunflower.test/phone)--<< +78126700000
+http://sunflower.test/phone/%2B7+812+670+00+00 <--(http://sunflower.test/phone_country)--<< http://sunflower.test/country/RU
+http://sunflower.test/phone/%2B7+812+670+00+00 <--(http://sunflower.test/raw_phone)--<< +7 812 670 00 00
+http://sunflower.test/phone/%2B7+812+670+00+00 <--(http://sunflower.test/type)--<< 
+http://sunflower.test/phone/%2B7+812+670+00+00 <--(http://sunflower.test/type)--<< voice
+http://sunflower.test/phone/%2B7+812+670+00+00 <--(http://www.w3.org/1999/02/22-rdf-syntax-ns#type)--<< http://sunflower.test/Phone
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/handle_city)--<< http://sunflower.test/city/Sankt-Peterburg_60.0_30.5
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/handle_country)--<< http://sunflower.test/country/RU
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/handle_email)--<< abuse@comfortel.pro
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/handle_email)--<< lir@comfortel.pro
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/handle_last_modified)--<< 2022-01-18T10:37:33.000Z
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/handle_name)--<< CMFT
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/handle_zip_code)--<< http://sunflower.test/zip_code/197374
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/has_phone)--<< http://sunflower.test/phone/%2B7+812+670+00+00
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/has_phone)--<< http://sunflower.test/phone/%2B7+812+670+00+00+ext.+4
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/is_abuse_c_of)--<< http://sunflower.test/asn_cidr/85.142.164.0%2F22
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/is_abuse_c_of)--<< http://sunflower.test/asn_cidr/85.142.247.0%2F24
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/is_abuse_c_of)--<< http://sunflower.test/asn_cidr/89.104.126.0%2F24
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/is_abuse_c_of)--<< http://sunflower.test/asn_cidr/89.223.80.0%2F21
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/is_admin_c_of)--<< http://sunflower.test/asn_cidr/89.223.100.0%2F24
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/is_admin_c_of)--<< http://sunflower.test/asn_cidr/89.104.126.0%2F24
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/is_admin_c_of)--<< http://sunflower.test/asn_cidr/89.223.80.0%2F21
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/is_tech_c_of)--<< http://sunflower.test/asn_cidr/89.223.100.0%2F24
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/is_tech_c_of)--<< http://sunflower.test/asn_cidr/89.104.126.0%2F24
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/is_tech_c_of)--<< http://sunflower.test/asn_cidr/89.223.80.0%2F21
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/source)--<< RIPE
+http://sunflower.test/handle/CMFT <--(http://www.w3.org/2006/vcard/ns#hasAddress)--<< http://sunflower.test/address/savushkina+119-5_+193091+st_petersburg+russia
+http://sunflower.test/handle/CMFT <--(http://www.w3.org/2006/vcard/ns#hasAddress)--<< http://sunflower.test/address/savushkina+119-5_193091+st_petersburg+russia
+http://sunflower.test/handle/CMFT <--(http://www.w3.org/2006/vcard/ns#hasEmail)--<< mailto:abuse@comfortel.pro
+http://sunflower.test/handle/CMFT <--(http://www.w3.org/2006/vcard/ns#hasEmail)--<< mailto:lir@comfortel.pro
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/abuse_mailbox)--<< mailto:abuse@comfortel.pro
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/fax_no)--<< +7 812 670 00 00 ext. 4
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/handle_admin_c)--<< http://sunflower.test/handle/ME3174-RIPE
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/handle_tech_c)--<< http://sunflower.test/handle/POOF-RIPE
+http://sunflower.test/handle/CMFT <--(http://sunflower.test/role)--<< Comfortel Ltd Contacts Data
+http://sunflower.test/handle/CMFT <--(http://www.w3.org/1999/02/22-rdf-syntax-ns#type)--<< http://sunflower.test/Handle
+http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/abuse_c)--<< http://sunflower.test/handle/CMFT
+http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/cidr)--<< 85.142.164.0/22
+http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/cidr_country)--<< http://sunflower.test/country/RU
+http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/cidr_last_modified)--<< 2018-06-30T20:11:06.000Z
+http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/end_address)--<< 85.142.167.255
+http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/ip_version)--<< v4
+http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/is_contained_in)--<< http://sunflower.test/asn/56534
+http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/netname)--<< NET
+http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://sunflower.test/start_address)--<< 85.142.164.0
+http://sunflower.test/asn_cidr/85.142.164.0%2F22 <--(http://www.w3.org/1999/02/22-rdf-syntax-ns#type)--<< http://sunflower.test/AsnCidr

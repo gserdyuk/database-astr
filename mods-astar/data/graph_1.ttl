@@ -1,0 +1,12 @@
+# example 1
+# original
+# node:x edge:y node: z  ->   x -> z [label=y]
+#
+@prefix node: <http://sun.flower.ua/>.
+@prefix edge: <http://sun.flower.ua#>.
+
+node:a edge:p node:b.
+node:b edge:p node:c.
+node:c edge:q node:d.
+#node:d edge:p node:c.
+

@@ -1,8 +1,8 @@
 #!/bin/bash
 BLZGRF=~/epddp/database-astr/blazegraph-jar/target/blazegraph-jar-2.1.6-SNAPSHOT.jar
 
-#DEBUGFLAGS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
-DEBUGFLAGS=" "
-java -server -Xmx4g -jar $DEBUGFLAGS $BLZGRF
+DEBUGFLAGS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
+#DEBUGFLAGS=" "
+#java -server -Xmx4g -jar $DEBUGFLAGS $BLZGRF
 
 

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+diff -q bond1_out.txt  golden
+
+
+diff -q test1_out.txt   golden
+diff -q test1-1_out.txt golden
+diff -q test2_out.txt   golden
+diff -q test3-1_out.txt golden
+diff -q test3_out.txt   golden
+
+
+diff -q triplets_1_out.txt    golden
+diff -q triplets_2_out.txt    golden
+diff -q triplets_2_1_out.txt  golden
+diff -q triplets_3_out.txt    golden
+diff -q triplets_3_1_out.txt  golden
+diff -q triplets_4_out.txt    golden
+

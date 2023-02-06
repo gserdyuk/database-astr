@@ -1,5 +1,0 @@
-James Bond knows:
-M
-Q
-http://example.org/stuff/M
-http://example.org/stuff/Q

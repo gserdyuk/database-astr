@@ -1,0 +1,15 @@
+"<Response [200]>"
+----------------------
+{
+    "head": {
+        "vars": [
+            "depth",
+            "predecessor",
+            "linkType",
+            "out"
+        ]
+    },
+    "results": {
+        "bindings": []
+    }
+}

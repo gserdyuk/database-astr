@@ -1,0 +1,20 @@
+#!/bin/bash
+
+python bond1.py 	> bond1_out.txt
+
+
+python test1.py		> test1_out.txt
+python test1-1.py	>test1-1_out.txt
+python test2.py		> test2_out.txt
+python test3-1.py	> test3-1_out.txt
+python test3.py		> test3_out.txt
+
+
+python triplets_1.py	> triplets_1_out.txt
+python triplets_2.py	> triplets_2_out.txt
+python triplets_2_1.py	> triplets_2_1_out.txt
+python triplets_3.py	> triplets_3_out.txt
+python triplets_3_1.py	> triplets_3_1_out.txt
+python triplets_4.py	> triplets_4_out.txt
+
+#./diff_all

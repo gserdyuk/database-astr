@@ -1,4 +1,4 @@
-
+import json
 from pymantic.rdf import *
 from pymantic.parsers import turtle_parser
 from pymantic.sparql import SPARQLServer
@@ -21,7 +21,10 @@ print('----------------------')
 q='''
 # example 2
 PREFIX gas: <http://www.bigdata.com/rdf/gas#>
-SELECT ?depth ?out ?predecessor{
+SELECT ?depth ?out ?p ?o
+  where { 
+    ?out ?p ?o .
+  
   SERVICE gas:service {
      gas:program gas:gasClass "com.bigdata.rdf.graph.analytics.ASTAR" .
      gas:program gas:in <http://sunflower.test/handle/IS111-RIPE> . # one or more times, specifies the initial frontier.
@@ -33,15 +36,19 @@ SELECT ?depth ?out ?predecessor{
      gas:program gas:maxIteration 10 . # optional limit on breadth first expansion.
      gas:program gas:maxVisited 500 . # optional limit on the #of visited vertices.
      gas:program gas:traversalDirection 'Undirected' . # optional limit on the #of visited vertices.
-     gas:program gas:nthreads 1
-  }
-} 
+     gas:program gas:nthreads 1 .
+     gas:program gas:epv <http://sunflower.test/is_admin_c_of> .
+     } .
+    FILTER (?p!=<http://sunflower.test/is_admin_c_of>)
+  } 
 order by ?depth
 '''
 ans=server.query(q)
 
-print(ans)
+print(json.dumps(ans, indent=4, default=str))
 
 for iter in ans['results']['bindings']:
-    print ( iter['out']['value'] + " <--()--<< "+ iter.get('predecessor',{'value':' '})['value'])
-
+    print ( iter['out']['value']          + "<--("+
+    iter.get('p',{'value':' '})['value']  + ")--<< "+ 
+    iter.get('o',{'value':' '})['value'] 
+    )
