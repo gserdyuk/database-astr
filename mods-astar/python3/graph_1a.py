@@ -50,7 +50,7 @@ SELECT ?depth ?out ?p ?o
      gas:program gas:epv <http://sun.flower.ua#q> .
      } .
             
-   #FILTER(?p!=edge:q) .
+   FILTER(?p!=edge:q) .
 }
 '''
 ans=server.query(q)
