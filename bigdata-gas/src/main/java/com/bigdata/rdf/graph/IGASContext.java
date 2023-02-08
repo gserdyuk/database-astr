@@ -263,8 +263,9 @@ public interface IGASContext<VS, ES, ST> extends Callable<IGASStats> {
     /**
      * 
      */
-    Value[] getEpv();
-
+    //Value[] getEpv();
+    Set<Value> getEpv();
+    
     /**
      * 
      */

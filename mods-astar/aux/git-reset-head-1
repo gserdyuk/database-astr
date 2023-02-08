@@ -1,0 +1,108 @@
+-
+
+gserdyuk@gs-asus:~/epddp/database-astr/mods-astar$ git reflog
+7c0ff2ca3 (HEAD -> master, origin/master, origin/HEAD) HEAD@{0}: reset: moving to HEAD~2
+c9b382493 HEAD@{1}: commit: chn ages
+631458cff HEAD@{2}: commit: january result
+7c0ff2ca3 (HEAD -> master, origin/master, origin/HEAD) HEAD@{3}: commit: examples prepared
+3aadd2275 HEAD@{4}: commit: removed print_frontierc3
+cad0dc148 HEAD@{5}: commit: fixed to use exatct match
+04166e598 HEAD@{6}: commit: forgotten source
+01334fd56 HEAD@{7}: commit: log of changed
+f35e84bfc HEAD@{8}: commit: visualization files added
+b78f0a062 HEAD@{9}: commit: multiple path rejecton rules
+040d69738 HEAD@{10}: commit: a few pythonistic calls to blazegraph
+54b5443c8 HEAD@{11}: commit: a few pythonistic calls to blazegraph
+f2f300852 HEAD@{12}: commit: simple branch filer is implemented
+d2b564f4e HEAD@{13}: commit: tracing by prints 2
+64de2b087 HEAD@{14}: commit: tracing by prints
+c28dd7372 HEAD@{15}: commit: modifcations for astar: notes,build, astar.java template
+829ce8241 (upstream/master) HEAD@{16}: clone: from https://github.com/gserdyuk/database-astr.git
+gserdyuk@gs-asus:~/epddp/database-astr/mods-astar$ git reset HEAD@{1}
+Unstaged changes after reset:
++D	README-2.md
++D	mods-astar/data/graph_1.ttl
++D	mods-astar/data/graph_2.ttl
++D	mods-astar/data/graph_3.ttl
++D	mods-astar/data/graph_4.ttl
+D	mods-astar/memo-1.yml
+D	mods-astar/python/.#test_all
++D	mods-astar/python/bond1_out.txt
++D	mods-astar/python/diff_all
+M	mods-astar/python/example_1.py
+M	mods-astar/python/example_1_1.py
+D	mods-astar/python/example_1_1_out.txt
+D	mods-astar/python/example_1_out.txt
+M	mods-astar/python/example_2.py
+D	mods-astar/python/example_2_out.txt
+D	mods-astar/python/example_3.py
+D	mods-astar/python/example_4.py
+M	mods-astar/python/golden/test1_out.txt
+M	mods-astar/python/golden/test3_out.txt
+D	mods-astar/python/test1_out.txt
+D	mods-astar/python/test2_out.txt
+D	mods-astar/python/test3-1_out.txt
+M	mods-astar/python/test3.py
+D	mods-astar/python/test3_out.txt
+D	mods-astar/python/test_all
+D	mods-astar/python2/bond1_out.txt
+D	mods-astar/python2/diff_all
+D	mods-astar/python2/golden/bond1_out.txt
+D	mods-astar/python2/golden/test1-1_out.txt
+D	mods-astar/python2/golden/test1_out.txt
+D	mods-astar/python2/golden/test2_out.txt
+D	mods-astar/python2/golden/test3-1_out.txt
+D	mods-astar/python2/golden/test3_out.txt
+D	mods-astar/python2/golden/triplets_1_out.txt
+D	mods-astar/python2/golden/triplets_2_1_out.txt
+D	mods-astar/python2/golden/triplets_2_out.txt
+D	mods-astar/python2/golden/triplets_3_1_out.txt
+D	mods-astar/python2/golden/triplets_3_out.txt
+M	mods-astar/python2/test1-1.py
+D	mods-astar/python2/test1-1_out.txt
+D	mods-astar/python2/test1_out.txt
+D	mods-astar/python2/test2_out.txt
+D	mods-astar/python2/test3-1_out.txt
+D	mods-astar/python2/test3_out.txt
+D	mods-astar/python2/test_all
+D	mods-astar/python2/triplets_1_out.txt
+D	mods-astar/python2/triplets_2_1_out.txt
+D	mods-astar/python2/triplets_2_out.txt
+D	mods-astar/python2/triplets_3_1_out.txt
+D	mods-astar/python2/triplets_3_out.txt
+D	mods-astar/python2/triplets_4_out.txt
+D	mods-astar/python3/diff_all
++D	mods-astar/python3/golden/graph_1_out.txt
++D	mods-astar/python3/golden/graph_1a_out.txt
++D	mods-astar/python3/golden/graph_2_out.txt
++D	mods-astar/python3/golden/graph_3_out.txt
++D	mods-astar/python3/graph_1.py
++D	mods-astar/python3/graph_1_out.txt
++D	mods-astar/python3/graph_1a.py
++D	mods-astar/python3/graph_1a_out.txt
++D	mods-astar/python3/graph_2.py
++D	mods-astar/python3/graph_2_out.txt
++D	mods-astar/python3/graph_3.py
++D	mods-astar/python3/graph_3_out.txt
++D	mods-astar/python3/graph_4.py
++D	mods-astar/python3/graph_4_out.txt
++D	mods-astar/python3/test_all
++D	mods-astar/sparql-queries.docx
+D	mods-astar/targets/1.jdb
+D	mods-astar/targets/2.jdb
+M	mods-astar/targets/copy-ASTAR
+D	mods-astar/targets/debugme
+D	mods-astar/targets/debugme11
+D	mods-astar/targets/logfile40.txt
+D	mods-astar/targets/logfile41.txt
+D	mods-astar/targets/logfile42.txt
+M	mods-astar/targets/my-start
+M	mods-astar/targets/my-start-ASTAR
+M	mods-astar/targets/my-start-SNAPSHOT
+D	mods-astar/targets/tmp/blazegraph-jar-2.1.5-ASTAR.jar
+D	mods-astar/targets/tmp/blazegraph-jar-2.1.6-ASTAR.jar
+D	mods-astar/targets/tmp/blazegraph-jar-2.1.6-SNAPSHOT.jar
+D	mods-astar/targets/tmp/blazegraph-jar-2.1.6-noastar.jar
++D	scripts/build-Docker-driver.sh
+
+gserdyuk@gs-asus:~/epddp/database-astr/mods-astar$ 

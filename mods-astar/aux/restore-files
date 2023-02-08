@@ -1,0 +1,9 @@
+#!/bin/bash
+
+LIST=`cat  git-reset-files | awk '{print$2}'`
+
+for file in $LIST; do
+    echo $file
+    git show :$file >$file
+
+done

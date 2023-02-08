@@ -52,6 +52,25 @@
             {
                 "out": {
                     "type": "uri",
+                    "value": "http://sun.flower.ua/c"
+                },
+                "depth": {
+                    "datatype": "http://www.w3.org/2001/XMLSchema#int",
+                    "type": "literal",
+                    "value": "2"
+                },
+                "p": {
+                    "type": "uri",
+                    "value": "http://sun.flower.ua#q"
+                },
+                "o": {
+                    "type": "uri",
+                    "value": "http://sun.flower.ua/d"
+                }
+            },
+            {
+                "out": {
+                    "type": "uri",
                     "value": "http://sun.flower.ua/d"
                 },
                 "depth": {
@@ -73,4 +92,5 @@
 }
 http://sun.flower.ua/a <--(http://sun.flower.ua#p)--<< http://sun.flower.ua/b
 http://sun.flower.ua/b <--(http://sun.flower.ua#p)--<< http://sun.flower.ua/c
+http://sun.flower.ua/c <--(http://sun.flower.ua#q)--<< http://sun.flower.ua/d
 http://sun.flower.ua/d <--(http://sun.flower.ua#p)--<< http://sun.flower.ua/c

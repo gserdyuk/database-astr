@@ -22,6 +22,13 @@ node:d edge:p node:c .
 }
 '''
 
+
+'''
+a --p->  b  --p->  c  --q->  d
+                      <-p--
+
+'''
+
 ans1=server.update(u)
 
 print(json.dumps(ans1, indent=4, default=str))
@@ -50,7 +57,7 @@ SELECT ?depth ?out ?p ?o
      gas:program gas:epv <http://sun.flower.ua#q> .           
      } .
             
-   FILTER(?p!=edge:q) .
+   #FILTER(?p!=edge:q) .
 }
 '''
 ans=server.query(q)
